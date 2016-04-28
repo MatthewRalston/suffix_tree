@@ -1,12 +1,12 @@
 Metadata-Version: 1.0
 Name: suffix_tree
-Version: 2.1
+Version: 2.2
 Summary: 
-      A python suffix tree, for easy algorithmic prototyping.
+      A python suffix tree (for easy algorithmic prototyping) with Unicode support.
       
-Home-page: http://www.daimi.au.dk/~mailund/suffix_tree.html
-Author: Thomas Mailund
-Author-email: mailund@birc.dk
+Home-page: http://researchonsearch.blogspot.com/2010/05/suffix-tree-implementation-with-unicode.html
+Author: Dell Zhang
+Author-email: dell.z@ieee.org
 License: UNKNOWN
 Description: UNKNOWN
 Platform: UNKNOWN

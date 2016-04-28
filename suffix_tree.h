@@ -4,6 +4,8 @@
 #ifndef SUFFIX_TREE_H_INCLUDED
 #define SUFFIX_TREE_H_INCLUDED
 
+#define MAX_STR_LEN 4096
+
 /* doubly linked list */
 struct list {
     struct node *head;
@@ -36,7 +38,7 @@ typedef struct node node_t;
 
 
 struct suffix_tree {
-    char *str;
+    wchar_t *str;
     int str_len;
     node_t *root;
     int new_node;
@@ -47,8 +49,8 @@ typedef struct suffix_tree suffix_tree_t;
 
 /* builds a suffix tree for the string s -- s must NOT contain the
    special character `term' (term ensures that all suffixes are leaves) */
-suffix_tree_t *       st_make(const char *s, const char term);
-const node_t *        st_find(const suffix_tree_t *tree, const char *s);
+suffix_tree_t *       st_make(const wchar_t *s, const wchar_t term);
+const node_t *        st_find(const suffix_tree_t *tree, const wchar_t *s);
 
 
 

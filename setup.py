@@ -6,15 +6,15 @@ _suffix_tree = Extension('_suffix_tree',['python_bindings.c',
                                          'suffix_tree.c'])
 
 setup(name="suffix_tree",
-      version="2.1",
+      version="2.2",
       description="""
-      A python suffix tree, for easy algorithmic prototyping.
+      A python suffix tree (for easy algorithmic prototyping) with Unicode support.
       """,
 
-      author="Thomas Mailund",     author_email="mailund@birc.dk",
-      maintainer="Thomas Mailund", maintainer_email="mailund@birc.dk",
-      contact="Thomas Mailund",    contact_email="mailund@birc.dk",
-      url='http://www.daimi.au.dk/~mailund/suffix_tree.html',
+      author="Dell Zhang",     author_email="dell.z@ieee.org",
+      maintainer="Dell Zhang", maintainer_email="dell.z@ieee.org",
+      contact="Dell Zhang",    contact_email="dell.z@ieee.org",
+      url='http://researchonsearch.blogspot.com/2010/05/suffix-tree-implementation-with-unicode.html',
 
       scripts=[],
       py_modules=["suffix_tree"],

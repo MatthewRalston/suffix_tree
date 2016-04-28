@@ -55,7 +55,7 @@ tree, methods that are more easily expressed in Python than in C, and
 that can be written using the primitives exported from C.  """
 
     
-    def __init__(self,s,t='$'):
+    def __init__(self,s,t=u'$'):
         '''Build a suffix tree from the input string s. The string
 must not contain the special symbol $.'''
         if t in s:
@@ -102,7 +102,7 @@ sequences.'''
 
         self.sequences = sequences
         self.startPositions = [0]
-        concatString = ''
+        concatString = u''
         for i in xrange(len(sequences)):
             if chr(i+1) in sequences[i]:
                 raise "The suffix tree string must not contain chr(%d)!"%(i+1)
@@ -110,7 +110,7 @@ sequences.'''
             self.startPositions += [len(concatString)]
 
         self.startPositions += [self.startPositions[-1]+1] # empty string
-        self.sequences += ['']
+        self.sequences += [u'']
 
         SuffixTree.__init__(self,concatString)
         self._annotateNodes()
@@ -157,10 +157,10 @@ sequences.'''
 
 def simple_test():
     print 'SIMPLE TEST'
-    st = SuffixTree('mississippi','#')
-    assert st.string == 'mississippi#'
-    st = SuffixTree('mississippi')
-    assert st.string == 'mississippi$'
+    st = SuffixTree(u'mississippi',u'#')
+    assert st.string == u'mississippi#'
+    st = SuffixTree(u'mississippi')
+    assert st.string == u'mississippi$'
 
     r = st.root
     assert st.root == r
@@ -194,25 +194,29 @@ def simple_test():
 def generalised_test():
 
     print 'GENERALISED TEST'
-    sequences = ['xabxa','babxba']
+    sequences = [u'xabxa',u'babxba']
     st = GeneralisedSuffixTree(sequences)
 
     for shared in st.sharedSubstrings():
         print '-'*70
         for seq,start,stop in shared:
-            print seq, '['+str(start)+':'+str(stop)+']',
+            print seq, 
+            print '['+str(start)+':'+str(stop)+']',
             print sequences[seq][start:stop],
-            print sequences[seq][:start]+'|'+sequences[seq][start:stop]+\
-                  '|'+sequences[seq][stop:]
+            print sequences[seq][:start]+\
+                  '{'+sequences[seq][start:stop]+'}'+\
+                  sequences[seq][stop:]
     print '='*70
 
     for shared in st.sharedSubstrings(2):
         print '-'*70
         for seq,start,stop in shared:
-            print seq, '['+str(start)+':'+str(stop)+']',
+            print seq, 
+            print '['+str(start)+':'+str(stop)+']',
             print sequences[seq][start:stop],
-            print sequences[seq][:start]+'|'+sequences[seq][start:stop]+\
-                  '|'+sequences[seq][stop:]
+            print sequences[seq][:start]+\
+                  '{'+sequences[seq][start:stop]+'}'+\
+                  sequences[seq][stop:]
     print '='*70
 
     print 'done.\n\n'
